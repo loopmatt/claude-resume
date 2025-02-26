@@ -3,7 +3,58 @@ import ReactMarkdown from 'react-markdown';
 import LearningJourney from './components/LearningJourney';
 import Visualizer from './components/Visualizer';
 import EasterEgg from './components/EasterEgg';
-import './claude-styles.css';
+import './claude-dark-styles.css';
+
+// SVG Icons
+const ChatIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const ShareIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 12L15 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 9L12 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M3 15C3 18.3137 5.68629 21 9 21H15C18.3137 21 21 18.3137 21 15V9C21 5.68629 18.3137 3 15 3H9C5.68629 3 3 5.68629 3 9V15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const SendIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10.5004 12H5.00043M4.91577 12.2915L2.58085 19.2662C2.39742 19.8139 2.3057 20.0878 2.37152 20.2566C2.42868 20.4031 2.55144 20.5142 2.70292 20.5565C2.87736 20.6052 3.14083 20.4866 3.66776 20.2495L20.3792 12.7944C20.8936 12.5663 21.1507 12.4522 21.2302 12.2966C21.2993 12.1563 21.2993 11.9945 21.2302 11.8541C21.1507 11.6985 20.8936 11.5844 20.3792 11.3563L3.66193 3.89901C3.13535 3.66195 2.87206 3.54342 2.69776 3.59214C2.54678 3.63442 2.42438 3.74518 2.36745 3.89132C2.30185 4.05991 2.39283 4.33377 2.5748 4.88148L4.91637 11.7086C4.94759 11.7747 4.96321 11.8078 4.96999 11.8423C4.97593 11.8726 4.97593 11.9037 4.96999 11.934C4.96321 11.9685 4.94759 12.0015 4.91637 12.0676L4.91577 12.2915Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const ClipboardIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 5H6C4.89543 5 4 5.89543 4 7V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V7C20 5.89543 19.1046 5 18 5H16M8 5V3C8 1.89543 8.89543 1 10 1H14C15.1046 1 16 1.89543 16 3V5M8 5H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const ThumbsUpIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 22V11M2 13V20C2 21.1046 2.89543 22 4 22H17.4262C18.335 22 19.1424 21.3962 19.3805 20.5192L21.4333 13.5192C21.7585 12.3098 20.8487 11.114 19.579 11.0192L15 10.5C14.0312 10.425 13.2886 9.73797 13.1535 8.77907L12.5 4.5C12.2886 3.17596 11.1543 2.25493 9.8125 2.51874C8.47067 2.78256 7.55 4.08162 7.8125 5.42406L9 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const ThumbsDownIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17 2V13M22 11V4C22 2.89543 21.1046 2 20 2H6.57375C5.66501 2 4.85759 2.60384 4.61946 3.48078L2.56671 10.4808C2.24154 11.6902 3.15128 12.886 4.42098 12.9808L9 13.5C9.96878 13.575 10.7114 14.262 10.8465 15.2209L11.5 19.5C11.7114 20.824 12.8457 21.7451 14.1875 21.4813C15.5293 21.2174 16.45 19.9184 16.1875 18.5759L15 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const RetryIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M21 8V3M21 3H16M21 3L15 9M10 4.00006C6.50005 4.50006 4 7.50006 4 11.0001C4 14.5001 6.5 17.5001 10 18.0001M14 20.0001C17.5 19.5001 20 16.5001 20 13.0001C20 12.5001 19.951 12.0111 19.852 11.5341" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const AttachmentIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M21.1525 10.8995L12.1369 19.9151C10.0866 21.9654 6.7995 21.9654 4.74924 19.9151C2.69898 17.8649 2.69898 14.5778 4.74924 12.5275L13.7648 3.51193C15.0151 2.26164 17.0654 2.26164 18.3157 3.51193C19.566 4.76222 19.566 6.81252 18.3157 8.06281L10.5109 15.8676C9.88577 16.4928 8.92556 16.4928 8.30042 15.8676C7.67528 15.2425 7.67528 14.2823 8.30042 13.6571L14.8483 7.10925" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
 
 const ClaudeResumeInterface = () => {
   const [messages, setMessages] = useState([]);
@@ -208,7 +259,7 @@ This project demonstrates my technical skills and ability to transform raw data 
     processInput(userInput);
   };
   
-  // Process user input and determine response
+  // Process user input and determine response - same as before
   const processInput = (input) => {
     // Convert to lowercase for matching
     const lowerInput = input.toLowerCase();
@@ -266,90 +317,129 @@ This project demonstrates my technical skills and ability to transform raw data 
     <div className="claude-container">
       {/* Claude Header */}
       <header className="claude-header">
-        <div className="claude-logo">
-          <img src="/anthropic-logo.svg" alt="Anthropic" height="24" />
-          <span>Claude</span>
+        <div className="claude-logo">Claude</div>
+        <div className="claude-chat-title">
+          <ChatIcon />
+          Resume Building Assistance
         </div>
-        <nav className="claude-nav">
-          <a href="#" className="claude-nav-item">Interactive Resume</a>
-          <a href="#" className="claude-nav-item">About</a>
-          <a href="#" className="claude-nav-item">Contact</a>
-        </nav>
+        <div className="claude-nav">
+          <button className="claude-nav-button">
+            <ShareIcon />
+          </button>
+          <div className="claude-avatar">MP</div>
+        </div>
       </header>
       
-      {/* Chat Container */}
-      <div ref={chatContainerRef} className="claude-chat-container">
-        {messages.map((message, index) => (
-          <div 
-            key={index} 
-            className={`claude-message ${message.isUser ? 'claude-message-user' : 'claude-message-assistant'} claude-fade-in`}
-          >
-            <div className="claude-message-attribution">
-              {message.isUser ? "You" : "Claude"}
-            </div>
+      <div className="claude-main">
+        {/* Sidebar Indicator */}
+        <div className="claude-sidebar-indicator">
+          <div className="claude-sidebar-avatar">MP</div>
+        </div>
+        
+        {/* Chat Container */}
+        <div ref={chatContainerRef} className="claude-chat-container">
+          {messages.map((message, index) => (
             <div 
-              className={`claude-message-content ${message.isUser ? 'claude-user-content' : 'claude-assistant-content'}`}
+              key={index} 
+              className={`claude-message ${message.isUser ? 'claude-message-user' : 'claude-message-assistant'} claude-fade-in`}
             >
-              <ReactMarkdown>{message.text}</ReactMarkdown>
+              <div className="claude-message-attribution">
+                {message.isUser ? "You" : "Claude"}
+              </div>
+              <div 
+                className={`claude-message-content ${message.isUser ? 'claude-user-content' : 'claude-assistant-content'}`}
+              >
+                <ReactMarkdown>{message.text}</ReactMarkdown>
+                
+                {/* Add interactive components inline with assistant messages */}
+                {!message.isUser && message.text.includes('!LEARNING') && showLearningJourney && (
+                  <div className="claude-interactive-component">
+                    <LearningJourney />
+                  </div>
+                )}
+                
+                {!message.isUser && message.text.includes('!POTENTIAL') && showPotential && (
+                  <div className="claude-interactive-component">
+                    <Visualizer />
+                  </div>
+                )}
+                
+                {!message.isUser && message.text.includes('!CLAUDE') && showEasterEgg && (
+                  <div className="claude-interactive-component">
+                    <EasterEgg />
+                  </div>
+                )}
+              </div>
               
-              {/* Add interactive components inline with assistant messages */}
-              {!message.isUser && message.text.includes('!LEARNING') && showLearningJourney && (
-                <div className="claude-interactive-component">
-                  <LearningJourney />
-                </div>
-              )}
-              
-              {!message.isUser && message.text.includes('!POTENTIAL') && showPotential && (
-                <div className="claude-interactive-component">
-                  <Visualizer />
-                </div>
-              )}
-              
-              {!message.isUser && message.text.includes('!CLAUDE') && showEasterEgg && (
-                <div className="claude-interactive-component">
-                  <EasterEgg />
+              {!message.isUser && (
+                <div className="claude-message-actions">
+                  <button className="claude-message-action">
+                    <ClipboardIcon />
+                  </button>
+                  <button className="claude-message-action">
+                    <ThumbsUpIcon />
+                  </button>
+                  <button className="claude-message-action">
+                    <ThumbsDownIcon />
+                  </button>
+                  <button className="claude-message-action">
+                    <RetryIcon />
+                  </button>
                 </div>
               )}
             </div>
-          </div>
-        ))}
-        
-        {/* Typing indicator */}
-        {isTyping && (
-          <div className="claude-message claude-message-assistant claude-fade-in">
-            <div className="claude-message-attribution">Claude</div>
-            <div className="claude-typing-indicator">
-              <div className="claude-typing-dot"></div>
-              <div className="claude-typing-dot"></div>
-              <div className="claude-typing-dot"></div>
+          ))}
+          
+          {/* Typing indicator */}
+          {isTyping && (
+            <div className="claude-message claude-message-assistant claude-fade-in">
+              <div className="claude-message-attribution">Claude</div>
+              <div className="claude-typing-indicator">
+                <div className="claude-typing-dot"></div>
+                <div className="claude-typing-dot"></div>
+                <div className="claude-typing-dot"></div>
+              </div>
             </div>
-          </div>
-        )}
-      </div>
-      
-      {/* Input Container */}
-      <div className="claude-input-container">
-        <form onSubmit={handleSubmit} className="claude-input-form">
-          <textarea
-            ref={textareaRef}
-            value={inputValue}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyPress}
-            placeholder="Type a command (e.g., Projects, Skills, !CLAUDE)"
-            className="claude-input-textarea"
-            rows={1}
-          />
-          <button
-            type="submit"
-            className="claude-send-button"
-            disabled={!inputValue.trim()}
-          >
-            Send
-          </button>
-        </form>
+          )}
+          
+          {/* Disclaimer notice */}
+          {messages.length > 0 && !isTyping && (
+            <div className="claude-footer">
+              Claude can make mistakes. Please double-check responses.
+            </div>
+          )}
+        </div>
         
-        <div className="claude-footer">
-          Try finding hidden commands starting with "!" to discover more about me.
+        {/* Input Container */}
+        <div className="claude-input-container">
+          <form onSubmit={handleSubmit} className="claude-input-form">
+            <textarea
+              ref={textareaRef}
+              value={inputValue}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyPress}
+              placeholder="Reply to Claude..."
+              className="claude-input-textarea"
+              rows={1}
+            />
+            
+            <div className="claude-input-actions">
+              <div className="claude-input-options">
+                <button type="button" className="claude-option-button">
+                  <AttachmentIcon />
+                </button>
+              </div>
+              
+              <button
+                type="submit"
+                className="claude-send-button"
+                disabled={!inputValue.trim()}
+              >
+                <SendIcon />
+                Send
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

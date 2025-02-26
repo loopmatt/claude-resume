@@ -1,0 +1,381 @@
+/* Claude Dark Theme Interface Styling */
+
+:root {
+    --claude-bg: #1e1e1e;
+    --claude-text: #ffffff;
+    --claude-header-bg: #272727;
+    --claude-message-bg: #2a2a2a;
+    --claude-user-message-bg: #333333;
+    --claude-border: #3a3a3a;
+    --claude-input-bg: #333333;
+    --claude-input-text: #ffffff;
+    --claude-accent: #f89d71;
+    --claude-secondary: #4d4d4d;
+    --claude-attribution: #adadad;
+  }
+  
+  body {
+    background-color: var(--claude-bg);
+    color: var(--claude-text);
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .claude-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .claude-header {
+    padding: 12px 24px;
+    background-color: var(--claude-header-bg);
+    border-bottom: 1px solid var(--claude-border);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .claude-logo {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--claude-text);
+    display: flex;
+    align-items: center;
+  }
+  
+  .claude-chat-title {
+    margin-left: 24px;
+    font-size: 16px;
+    color: var(--claude-text);
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+  }
+  
+  .claude-chat-title svg {
+    margin-right: 8px;
+  }
+  
+  .claude-nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .claude-nav-button {
+    color: var(--claude-text);
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+  
+  .claude-nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .claude-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f89d71;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .claude-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .claude-sidebar-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .claude-sidebar-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #4a4a4a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .claude-chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 20px 20px 60px; /* Add left padding for sidebar */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .claude-message {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    position: relative;
+  }
+  
+  .claude-message-attribution {
+    font-size: 13px;
+    color: var(--claude-attribution);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  
+  .claude-message-content {
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .claude-assistant-content {
+    background-color: var(--claude-message-bg);
+    border: 1px solid var(--claude-border);
+  }
+  
+  .claude-user-content {
+    background-color: var(--claude-user-message-bg);
+  }
+  
+  .claude-message ol, .claude-message ul {
+    padding-left: 24px;
+    margin: 12px 0;
+  }
+  
+  .claude-message li {
+    margin-bottom: 8px;
+  }
+  
+  .claude-message p {
+    margin: 0 0 16px 0;
+  }
+  
+  .claude-message p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .claude-message-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    align-self: flex-end;
+  }
+  
+  .claude-message-action {
+    background-color: transparent;
+    border: none;
+    color: var(--claude-attribution);
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .claude-message-action:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--claude-text);
+  }
+  
+  .claude-typing-indicator {
+    display: flex;
+    padding: 16px;
+    gap: 4px;
+    align-items: center;
+    background-color: var(--claude-message-bg);
+    border: 1px solid var(--claude-border);
+    border-radius: 8px;
+    width: fit-content;
+  }
+  
+  .claude-typing-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--claude-accent);
+    border-radius: 50%;
+    animation: claude-typing 1.4s infinite ease-in-out;
+    opacity: 0.7;
+  }
+  
+  .claude-typing-dot:nth-child(1) { animation-delay: 0s; }
+  .claude-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .claude-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  
+  @keyframes claude-typing {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-4px); }
+  }
+  
+  .claude-input-container {
+    position: sticky;
+    bottom: 0;
+    padding: 16px 20px 24px;
+    background-color: var(--claude-bg);
+    max-width: 800px;
+    margin: 0 auto;
+    width: calc(100% - 80px);
+  }
+  
+  .claude-input-form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--claude-input-bg);
+    border: 1px solid var(--claude-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .claude-input-textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 12px 16px;
+    font-family: inherit;
+    font-size: 16px;
+    min-height: 24px;
+    max-height: 200px;
+    background-color: transparent;
+    color: var(--claude-input-text);
+  }
+  
+  .claude-input-textarea::placeholder {
+    color: #888888;
+  }
+  
+  .claude-input-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-top: 1px solid var(--claude-border);
+  }
+  
+  .claude-input-options {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .claude-option-button {
+    background: transparent;
+    border: none;
+    color: var(--claude-attribution);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+  }
+  
+  .claude-option-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--claude-text);
+  }
+  
+  .claude-send-button {
+    background-color: var(--claude-accent);
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .claude-send-button:hover {
+    background-color: #faa989;
+  }
+  
+  .claude-send-button:disabled {
+    background-color: #444444;
+    color: #666666;
+    cursor: not-allowed;
+  }
+  
+  .claude-footer {
+    font-size: 12px;
+    color: var(--claude-attribution);
+    text-align: center;
+    padding: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .claude-interactive-component {
+    background-color: var(--claude-message-bg);
+    border: 1px solid var(--claude-border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+  }
+  
+  /* Animation for new messages */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .claude-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  /* For the loading spinner */
+  .claude-spinner {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: conic-gradient(#0000 10%, var(--claude-accent));
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 4px), #000 0);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 4px), #000 0);
+    animation: claude-spinner 1s infinite linear;
+  }
+  
+  @keyframes claude-spinner {
+    to { transform: rotate(1turn); }
+  }
